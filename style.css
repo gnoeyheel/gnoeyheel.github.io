@@ -113,17 +113,17 @@ header h1 {
 
 .hand {
   position: fixed;
-  bottom: -300px;
-  right: 340px;
-  width: 50%; 
+  bottom: -840px;
+  right: -250px;
+  width: 200%; 
   transform: rotate(-10deg); 
 }
 
 .eye {
   position: fixed;
-  top: 270px;
-  right: 340px;
-  width: 20%;
+  top: 180px;
+  right: -250px;
+  width: 90%;
   transform: rotate(8deg);
 }
 .right-inner {
@@ -131,14 +131,16 @@ header h1 {
 }
 
 .caption-fixed {
-  font-family:"int";
-  position: fixed;
+  position: relative;
   text-align: left;
-  top: 375px;
-  left: 925px;
+  top: 20px;
+  left: 30px;
   font-size: 14px;
   color: white;
   line-height: 1.6;
+  font-family: "int";
+  width: 300px;
+  margin-top: 20px;
 }
 
 .binary {

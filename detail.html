@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>상세페이지</title>
+  <title>22135938이진형중간과제</title>
   <link rel="stylesheet" href="style.css">
   <style>
     header h1 {
@@ -33,6 +33,89 @@
       margin-top: 4px;
       z-index: 999;
     }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: fadeInLeft 1s ease forwards;
+    }
+
+    .fade-in:nth-of-type(1) { animation-delay: 0.2s; }
+    .fade-in:nth-of-type(2) { animation-delay: 0.4s; }
+    .fade-in:nth-of-type(3) { animation-delay: 0.6s; }
+    .fade-in:nth-of-type(4) { animation-delay: 0.8s; }
+    .fade-in:nth-of-type(5) { animation-delay: 1s; }
+
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+  
+
+
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      flex-direction: column;
+      display: none;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 80%;
+    }
+
+    .overlay .close, .overlay .prev, .overlay .next {
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .overlay .close {
+      top: 20px;
+      right: 30px;
+    }
+
+    .overlay .prev {
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .overlay .next {
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .gallery-img {
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      height: auto;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .image-grid img {
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body>
@@ -42,16 +125,16 @@
   <main class="container">
     <section class="left">
       <div class="image-grid">
-        <img src="image1.png" alt="작품1">
-        <img src="image2.png" alt="작품2">
-        <img src="image3.png" alt="작품3">
-        <img src="image4.png" alt="작품4">
-        <img src="image5.png" alt="작품5">
+        <div class="image-wrapper"><img class="fade-in gallery-img" src="image1.png" alt="작품1"></div>
+        <div class="image-wrapper"><img class="fade-in gallery-img" src="image2.png" alt="작품2"></div>
+        <div class="image-wrapper"><img class="fade-in gallery-img" src="image3.png" alt="작품3"></div>
+        <div class="image-wrapper"><img class="fade-in gallery-img" src="image4.png" alt="작품4"></div>
+        <div class="image-wrapper"><img class="fade-in gallery-img" src="image5.png" alt="작품5"></div>
       </div>
     </section>
 
     <section class="right">
-      <div class="right-inner">
+      <div class="right-inner fade-in">
         <div class="title-box">
           <div class="kanji-wrapper">
             <div class="kanji-group">
@@ -66,15 +149,48 @@
             </div>
             <div class="header-label">작업물.</div>
           </div>
-          <div class="caption-fixed">
-            22년도부터 작업한 앨범, 싱글 커버 작업물입니다.<br>
-            실무경험을 쌓을 수 있는 좋은 기회였습니다.
-          </div>
-          <img src="hand2.png" alt="손" class="hand">
-          <img src="eye.png" alt="눈" class="eye">
         </div>
+        <div class="caption-fixed">
+          22년도부터 작업한 앨범, 싱글 커버 작업물입니다.<br>
+          실무경험을 쌓을 수 있는 좋은 기회였습니다.
+        </div>
+        <img src="hand2.png" alt="손" class="hand">
+        <img src="eye.png" alt="눈" class="eye">
       </div>
     </section>
   </main>
+
+  <div class="overlay" id="overlay">
+    <button class="close" onclick="closeOverlay()">X</button>
+    <button class="prev" onclick="changeImage(-1)">&#8592;</button>
+    <img id="overlayImage" src="" alt="큰 이미지">
+    <button class="next" onclick="changeImage(1)">&#8594;</button>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const images = document.querySelectorAll('.gallery-img');
+    let currentIndex = 0;
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        overlay.style.display = 'flex';
+        overlayImage.src = img.src;
+        currentIndex = index;
+      });
+    });
+
+    function closeOverlay() {
+      overlay.style.display = 'none';
+    }
+
+    function changeImage(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      if (currentIndex >= images.length) currentIndex = 0;
+      overlayImage.src = images[currentIndex].src;
+    }
+  </script>
 </body>
 </html>
