@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>상세페이지</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    header h1 {
+      position: relative;
+    }
+
+    header h1 a {
+      color: white;
+      text-decoration: none;
+      position: relative;
+    }
+
+    header h1 a:hover {
+      color: #58aaff;
+    }
+
+    header h1 a:hover::after {
+      content: '메인페이지로 돌아가기';
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background-color: #333;
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      white-space: nowrap;
+      border-radius: 4px;
+      margin-top: 4px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">HELLO!</a></h1>
+  </header>
+  <main class="container">
+    <section class="left">
+      <div class="image-grid">
+        <img src="image1.png" alt="작품1">
+        <img src="image2.png" alt="작품2">
+        <img src="image3.png" alt="작품3">
+        <img src="image4.png" alt="작품4">
+        <img src="image5.png" alt="작품5">
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="right-inner">
+        <div class="title-box">
+          <div class="kanji-wrapper">
+            <div class="kanji-group">
+              <div class="kanji">作</div>
+              <div class="roman">saku</div>
+              <div class="binary">(1110011 1100001 1101011)</div>
+            </div>
+            <div class="kanji-group">
+              <div class="kanji">品</div>
+              <div class="roman">hin</div>
+              <div class="binary">(1110101 1101000 1101001 1101110)</div>
+            </div>
+            <div class="header-label">작업물.</div>
+          </div>
+          <div class="caption-fixed">
+            22년도부터 작업한 앨범, 싱글 커버 작업물입니다.<br>
+            실무경험을 쌓을 수 있는 좋은 기회였습니다.
+          </div>
+          <img src="hand2.png" alt="손" class="hand">
+          <img src="eye.png" alt="눈" class="eye">
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
